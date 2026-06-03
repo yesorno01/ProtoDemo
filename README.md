@@ -1,4 +1,4 @@
-# ProtoDemo
+﻿# ProtoDemo
 
 基于 Trae IDE 技能驱动的 PPT 与 原型设计工程，用于快速生成高质量 HTML 演示文稿并导出为 PowerPoint 文件，或者设计页面原型。
 
@@ -17,7 +17,7 @@ ProtoDemo/
 ├── .agent/skills/
 │   └── dom-to-pptx-skill/           # HTML → PPTX 导出技能
 ├── design-system/             # 设计规范
-│   └── china-minerals/        # 中矿品牌配色规范
+│   └── minerals/              # 矿产品牌配色规范
 ├── docs/                      # 文档与教程
 ├── ppt/                       # PPT 产出物（HTML 格式）
 ├── prototype/                 # 原型文件
@@ -53,7 +53,7 @@ npm install
 node server.js
 ```
 
-默认访问 `http://localhost:3000`，自动打开 e矿汇安全汇报页面。
+默认访问 `http://localhost:3000`，自动打开 矿产平台安全汇报页面。
 
 也可使用 npx：
 
@@ -102,7 +102,7 @@ npx serve .
 - 自动设置 CORS 头（`Access-Control-Allow-Origin: *`），解决字体和图片跨域问题
 - 支持常见 MIME 类型（HTML/CSS/JS/图片/字体）
 - 端口占用时自动切换到下一端口
-- 默认路由指向 e矿汇安全汇报页面
+- 默认路由指向 矿产平台安全汇报页面
 
 ## dom-to-pptx 兼容要点
 
