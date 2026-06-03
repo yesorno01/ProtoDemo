@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e矿汇平台安全保障体系汇报</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           中国矿产资源集团 - 专业汇报配色规范
+           基于矿业属性设计，体现稳重、专业、权威
+           ============================================ */
+        
+        :root {
+            /* 主色调 - 矿业金系 */
+            --mining-gold: #B89A4B;           /* 矿业金 - 标题强调 */
+            --mining-gold-light: #D4B76A;     /* 浅矿业金 - 悬停效果 */
+            --mining-gold-dark: #9A7D3A;      /* 深矿业金 - 边框强调 */
+            
+            /* 主色调 - 深棕褐系 */
+            --deep-brown: #6B4423;            /* 深棕褐 - 副标题、边框 */
+            --deep-brown-light: #8B5A3A;      /* 浅棕褐 - 次级强调 */
+            --deep-brown-dark: #4A3018;       /* 深棕褐 - 深色背景 */
+            
+            /* 中性色 - 石墨灰系 */
+            --graphite: #4A4A4A;              /* 石墨灰 - 正文 */
+            --graphite-light: #6A6A6A;        /* 浅石墨 - 次级文字 */
+            --graphite-dark: #2A2A2A;         /* 深石墨 - 深色文字 */
+            
+            /* 背景色 - 米白系 */
+            --cream: #F5F0E6;                 /* 浅米白 - 页面背景 */
+            --cream-light: #FAF8F4;           /* 极浅米白 - 卡片背景 */
+            --cream-dark: #E8E4DC;            /* 深米白 - 分隔背景 */
+            
+            /* 功能色 - 状态指示 */
+            --success-green: #2D5A3D;         /* 墨绿 - 完成/正常 */
+            --warning-ochre: #B87333;         /* 赭石 - 警告/进行 */
+            --error-red: #8B3A3A;             /* 暗红 - 错误/风险 */
+            --info-blue: #4A6B8A;             /* 钢蓝 - 信息/链接 */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+            background: var(--cream);
+            color: var(--graphite);
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: var(--cream);
+        }
+
+        /* 顶部装饰线 - 矿业金 */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--deep-brown), var(--mining-gold), var(--deep-brown));
+        }
+
+        /* ===== Header 头部区域 ===== */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2vh 3vw 1.5vh;
+            flex-shrink: 0;
+            background: linear-gradient(180deg, var(--cream-light), var(--cream));
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.2vw;
+        }
+
+        .brand-mark {
+            width: 4.5vh;
+            height: 4.5vh;
+            min-width: 45px;
+            min-height: 45px;
+            background: linear-gradient(135deg, var(--deep-brown), var(--mining-gold));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2vh;
+            box-shadow: 0 3px 12px rgba(107, 68, 35, 0.25);
+        }
+
+        .title-block h1 {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 900;
+            letter-spacing: -0.01em;
+            line-height: 1.15;
+            color: var(--deep-brown);
+        }
+
+        .title-block .subtitle {
+            font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+            color: var(--graphite-light);
+            margin-top: 0.3em;
+            font-weight: 500;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .org-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6vw;
+            margin-bottom: 0.5vh;
+        }
+
+        .logo-icon {
+            width: 3vh;
+            height: 3vh;
+            background: linear-gradient(135deg, var(--mining-gold), var(--mining-gold-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2vh;
+        }
+
+        .org-name {
+            font-size: clamp(0.8rem, 1.1vw, 1rem);
+            font-weight: 700;
+            color: var(--deep-brown);
+        }
+
+        .org-name-en {
+            font-size: clamp(0.55rem, 0.85vw, 0.7rem);
+            color: var(--graphite-light);
+            letter-spacing: 0.02em;
+        }
+
+        /* ===== Main Content 主内容区 ===== */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 2vh 3vw;
+            gap: 2vh;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        /* 核心定位语 */
+        .key-message {
+            background: linear-gradient(90deg, rgba(184,154,75,0.08), transparent);
+            border-left: 3px solid var(--mining-gold);
+            padding: 1.5vh 1.5vw;
+            border-radius: 0 8px 8px 0;
+            flex-shrink: 0;
+        }
+
+        .key-message p {
+            font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+            color: var(--graphite);
+            line-height: 1.6;
+        }
+
+        .key-message strong {
+            color: var(--deep-brown);
+            font-weight: 700;
+        }
+
+        .key-message .highlight-gold {
+            color: var(--mining-gold);
+            font-weight: 700;
+        }
+
+        /* 三场景卡片区 */
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5vw;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .scenario-card {
+            background: var(--cream-light);
+            border: 1px solid var(--cream-dark);
+            border-radius: 10px;
+            padding: 2vh 1.5vw;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 0;
+            box-shadow: 0 2px 8px rgba(107, 68, 35, 0.06);
+        }
+
+        .scenario-card:hover {
+            background: #FFFBF5;
+            border-color: rgba(184, 154, 75, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(107, 68, 35, 0.1);
+        }
+
+        /* 卡片顶部色带 */
+        .scenario-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .scenario-card:nth-child(1)::before { background: linear-gradient(90deg, var(--deep-brown), var(--mining-gold)); }
+        .scenario-card:nth-child(2)::before { background: linear-gradient(90deg, #2D5A3D, #4A8B6A); }
+        .scenario-card:nth-child(3)::before { background: linear-gradient(90deg, #8B3A3A, #B85C5C); }
+
+        .scen-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8vw;
+            margin-bottom: 1.5vh;
+            flex-shrink: 0;
+        }
+
+        .scen-icon {
+            width: 3.5vh;
+            height: 3.5vh;
+            min-width: 32px;
+            min-height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6vh;
+            flex-shrink: 0;
+        }
+
+        .scenario-card:nth-child(1) .scen-icon { background: rgba(184, 154, 75, 0.12); }
+        .scenario-card:nth-child(2) .scen-icon { background: rgba(45, 90, 61, 0.1); }
+        .scenario-card:nth-child(3) .scen-icon { background: rgba(139, 58, 58, 0.1); }
+
+        .scen-title {
+            font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+            font-weight: 700;
+            color: var(--deep-brown);
+        }
+
+        .scen-desc {
+            font-size: clamp(0.7rem, 1vw, 0.85rem);
+            color: var(--graphite-light);
+            line-height: 1.5;
+            margin-bottom: 1.5vh;
+            flex-shrink: 0;
+        }
+
+        .protection-flow {
+            background: rgba(184, 154, 75, 0.04);
+            border: 1px solid rgba(184, 154, 75, 0.12);
+            border-radius: 8px;
+            padding: 1.2vh 1vw;
+            margin-bottom: 1.5vh;
+            flex-shrink: 0;
+        }
+
+        .flow-title {
+            font-size: clamp(0.6rem, 0.85vw, 0.75rem);
+            color: var(--mining-gold);
+            font-weight: 700;
+            margin-bottom: 0.6vh;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .flow-content {
+            font-size: clamp(0.65rem, 0.9vw, 0.78rem);
+            color: var(--graphite);
+            line-height: 1.55;
+        }
+
+        .flow-content strong {
+            color: var(--deep-brown);
+            font-weight: 600;
+        }
+
+        .security-measures {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5vw;
+            flex: 1;
+            align-content: flex-start;
+        }
+
+        .measure-tag {
+            font-size: clamp(0.6rem, 0.85vw, 0.72rem);
+            padding: 0.35em 0.7em;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            white-space: nowrap;
+        }
+
+        .tag-done {
+            background: rgba(45, 90, 61, 0.1);
+            color: #2D5A3D;
+            border: 1px solid rgba(45, 90, 61, 0.2);
+        }
+
+        .tag-partial {
+            background: rgba(184, 115, 51, 0.1);
+            color: #B87333;
+            border: 1px solid rgba(184, 115, 51, 0.2);
+        }
+
+        /* 底部总结区 */
+        .bottom-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(90deg, rgba(184,154,75,0.06), rgba(107,68,35,0.04));
+            border: 1px solid rgba(184,154,75,0.15);
+            border-radius: 10px;
+            padding: 1.5vh 2vw;
+            flex-shrink: 0;
+        }
+
+        .summary-left {
+            display: flex;
+            align-items: center;
+            gap: 2vw;
+        }
+
+        .summary-stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+            font-weight: 900;
+            color: var(--mining-gold);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: clamp(0.6rem, 0.85vw, 0.75rem);
+            color: var(--graphite-light);
+            margin-top: 0.4em;
+        }
+
+        .summary-divider {
+            width: 1px;
+            height: 5vh;
+            background: rgba(184,154,75,0.2);
+        }
+
+        .summary-message {
+            font-size: clamp(0.82rem, 1.15vw, 1rem);
+            color: var(--graphite);
+            max-width: 32vw;
+            line-height: 1.6;
+        }
+
+        .summary-message strong {
+            color: var(--deep-brown);
+            font-weight: 700;
+        }
+
+        .summary-badge {
+            background: linear-gradient(135deg, rgba(184,154,75,0.12), rgba(107,68,35,0.08));
+            border: 1px solid rgba(184,154,75,0.25);
+            border-radius: 8px;
+            padding: 1vh 1.2vw;
+            text-align: center;
+        }
+
+        .badge-label {
+            font-size: clamp(0.55rem, 0.8vw, 0.7rem);
+            color: var(--graphite-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-value {
+            font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+            font-weight: 800;
+            color: var(--deep-brown);
+            margin-top: 0.25em;
+        }
+
+        /* 底部信息栏 */
+        .footer-bar {
+            padding: 1vh 3vw;
+            font-size: clamp(0.6rem, 0.9vw, 0.75rem);
+            color: var(--graphite-light);
+            border-top: 1px solid rgba(184,154,75,0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--cream);
+        }
+
+        .footer-tagline {
+            color: var(--graphite);
+            font-weight: 500;
+        }
+
+        .footer-tagline span {
+            color: var(--mining-gold);
+            font-weight: 700;
+        }
+
+        /* 响应式调整 */
+        @media (max-height: 750px) {
+            .main-content { padding: 1.5vh 3vw; gap: 1.5vh; }
+            .protection-flow { padding: 1vh 0.8vw; }
+            .scenario-card { padding: 1.5vh 1vw; }
+            .bottom-summary { padding: 1.2vh 1.5vw; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; transition-duration: 0.15s !important; }
+        }
+    </style>
+</head>
+<body>
+<div class="slide">
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <div class="brand-mark">⛏️</div>
+            <div class="title-block">
+                <h1>e矿汇平台安全保障体系</h1>
+                <div class="subtitle">铁矿石大宗交易平台 · 上线一年安全建设成果</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="org-logo">
+                <div class="logo-icon">◆</div>
+                <div>
+                    <div class="org-name">中国矿产资源集团</div>
+                    <div class="org-name-en">China Mineral Resources Group</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- 核心定位语 -->
+        <div class="key-message">
+            <p>e矿汇平台于<strong>2025年6月正式上线</strong>，目前已完成<strong class="highlight-gold">等保三级</strong>安全体系建设，覆盖铁矿石交易全链路。平台入驻<strong>50余家</strong>大型钢企与矿山，累计保障交易<strong>XX亿元</strong>，<strong class="highlight-gold">零重大安全事故</strong>。</p>
+        </div>
+
+        <!-- 三大场景 -->
+        <div class="scenarios-grid">
+            <!-- 场景1：交易磋商 -->
+            <div class="scenario-card">
+                <div class="scen-header">
+                    <div class="scen-icon">🤝</div>
+                    <div class="scen-title">交易磋商场景</div>
+                </div>
+                <div class="scen-desc">钢企与矿山在线查看行情、发布询盘、磋商定价，最终达成交易意向</div>
+                <div class="protection-flow">
+                    <div class="flow-title">安全保障机制</div>
+                    <div class="flow-content">
+                        <strong>企业实名准入</strong> — 对接工商库核验企业身份<br>
+                        <strong>操作全程留痕</strong> — 谁看过、报过价，全部可追溯<br>
+                        <strong>敏感操作双保险</strong> — 关键操作需UKey+短信双验证
+                    </div>
+                </div>
+                <div class="security-measures">
+                    <span class="measure-tag tag-done">✓ 企业实名认证</span>
+                    <span class="measure-tag tag-done">✓ 操作行为审计</span>
+                    <span class="measure-tag tag-done">✓ 双因素认证</span>
+                    <span class="measure-tag tag-partial">△ 报价脱敏展示</span>
+                </div>
+            </div>
+
+            <!-- 场景2：合同签订 -->
+            <div class="scenario-card">
+                <div class="scen-header">
+                    <div class="scen-icon">📝</div>
+                    <div class="scen-title">合同签订场景</div>
+                </div>
+                <div class="scen-desc">双方确认合同条款后，使用电子签章在线签署，合同自动存证归档</div>
+                <div class="protection-flow">
+                    <div class="flow-title">安全保障机制</div>
+                    <div class="flow-content">
+                        <strong>CA数字证书签章</strong> — 法律效力等同纸质盖章<br>
+                        <strong>区块链存证</strong> — 合同 hash 上链，防篡改、可验真<br>
+                        <strong>签署全流程记录</strong> — 谁、何时、在哪签的，全部留痕
+                    </div>
+                </div>
+                <div class="security-measures">
+                    <span class="measure-tag tag-done">✓ CA数字证书</span>
+                    <span class="measure-tag tag-done">✓ 区块链存证</span>
+                    <span class="measure-tag tag-done">✓ 防篡改水印</span>
+                    <span class="measure-tag tag-partial">△ 多方会签流程</span>
+                </div>
+            </div>
+
+            <!-- 场景3：资金结算 -->
+            <div class="scenario-card">
+                <div class="scen-header">
+                    <div class="scen-icon">💰</div>
+                    <div class="scen-title">资金结算场景</div>
+                </div>
+                <div class="scen-desc">根据合同约定发起付款，经过多级审批后，资金从买方账户划转至卖方</div>
+                <div class="protection-flow">
+                    <div class="flow-title">安全保障机制</div>
+                    <div class="flow-content">
+                        <strong>支付多要素验证</strong> — UKey+短信+密码，三重保险<br>
+                        <strong>7×24小时风控监测</strong> — 异常交易实时拦截告警<br>
+                        <strong>异地灾备部署</strong> — 数据实时备份，故障秒级切换
+                    </div>
+                </div>
+                <div class="security-measures">
+                    <span class="measure-tag tag-done">✓ 多要素验证</span>
+                    <span class="measure-tag tag-done">✓ 实时风控监测</span>
+                    <span class="measure-tag tag-done">✓ 异地灾备</span>
+                    <span class="measure-tag tag-partial">△ 大额复核机制</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部总结 -->
+        <div class="bottom-summary">
+            <div class="summary-left">
+                <div class="summary-stat">
+                    <div class="stat-num">50+</div>
+                    <div class="stat-label">入驻大型钢企/矿山</div>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-stat">
+                    <div class="stat-num">0</div>
+                    <div class="stat-label">重大安全事故</div>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-stat">
+                    <div class="stat-num">99.9%</div>
+                    <div class="stat-label">平台可用率</div>
+                </div>
+            </div>
+            <div class="summary-message">
+                <strong>安全是e矿汇的核心竞争力。</strong>过去一年，我们完成了从0到1的安全体系搭建，通过国家等保三级认证，覆盖交易、合同、资金全链路。<strong>下一步</strong>将在权限精细化、多方会签、数据加密等方面持续加固，确保平台长期稳定运行。
+            </div>
+            <div class="summary-badge">
+                <div class="badge-label">安全等级</div>
+                <div class="badge-value">等保三级</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导出PPTX按钮 -->
+    <button id="exportPptxBtn" style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 24px;
+        background: linear-gradient(135deg, #B89A4B, #6B4423);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(107, 68, 35, 0.3);
+        z-index: 1000;
+        transition: all 0.3s ease;
+    ">导出 PPTX</button>
+
+    <!-- Footer -->
+    <div class="footer-bar">
+        <span class="footer-tagline">安全是<span>e矿汇</span>的核心竞争力 · 让每一笔铁矿石交易都放心安心</span>
+        <span>中国矿产资源集团 · 信息安全团队</span>
+    </div>
+</div>
+
+<!-- dom-to-pptx Library -->
+<script src="https://cdn.jsdelivr.net/npm/dom-to-pptx@latest/dist/dom-to-pptx.umd.min.js"></script>
+
+<script>
+// 卡片悬停效果
+document.querySelectorAll('.scenario-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.zIndex = '10';
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.zIndex = '1';
+    });
+});
+
+// 导出PPTX功能 - 使用 dom-to-pptx 技能
+document.getElementById('exportPptxBtn').addEventListener('click', async function() {
+    const btn = this;
+    btn.textContent = '生成中...';
+    btn.style.opacity = '0.7';
+    
+    try {
+        // 获取当前幻灯片容器
+        const slideElement = document.querySelector('.slide');
+        
+        if (!slideElement) {
+            throw new Error('未找到幻灯片内容');
+        }
+        
+        // 使用 dom-to-pptx 技能进行转换
+        // 配置选项：保留矢量属性和渐变背景
+        const options = {
+            // 矢量图形设置
+            svgAsVector: true,
+            // 保留CSS渐变背景
+            preserveCssGradients: true,
+            // 图像质量
+            imageQuality: 1.0,
+            // 幻灯片尺寸 (16:9)
+            slideWidth: 10,
+            slideHeight: 5.625,
+            // 背景色处理
+            backgroundColor: '#F5F0E6',
+            // 字体设置
+            fontFamily: 'Microsoft YaHei, Noto Sans SC, sans-serif'
+        };
+        
+        // 调用 dom-to-pptx 进行转换
+        const pptx = await window.DomToPptx.convert(slideElement, options);
+        
+        // 下载生成的PPTX文件
+        const blob = await pptx.generateBlob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'e矿汇平台安全保障体系汇报.pptx';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        // 设置演示文稿属性
+        pptx.author = '中国矿产资源集团';
+        pptx.title = 'e矿汇平台安全保障体系汇报';
+        pptx.subject = '铁矿石大宗交易平台安全建设成果';
+        
+        // 定义配色方案（中矿配色）
+        const colors = {
+            miningGold: 'B89A4B',
+            deepBrown: '6B4423',
+            graphite: '4A4A4A',
+            cream: 'F5F0E6',
+            creamLight: 'FAF8F4',
+            creamDark: 'E8E4DC',
+            successGreen: '2D5A3D',
+            warningOchre: 'B87333',
+            borderGray: 'D4CFC4'
+        };
+        
+        // 添加幻灯片1：标题页
+        const slide1 = pptx.addSlide();
+        
+        // 设置背景色
+        slide1.background = { color: colors.cream };
+        
+        // 添加顶部装饰线
+        slide1.addShape('rect', {
+            x: 0, y: 0, w: '100%', h: 0.05,
+            fill: { color: colors.deepBrown }
+        });
+        
+        // 添加渐变装饰条
+        slide1.addShape('rect', {
+            x: 0, y: 0.05, w: '100%', h: 0.08,
+            fill: { 
+                color: colors.miningGold,
+                gradient: {
+                    type: 'linear',
+                    angle: 90,
+                    stops: [
+                        { position: 0, color: colors.deepBrown },
+                        { position: 0.5, color: colors.miningGold },
+                        { position: 1, color: colors.deepBrown }
+                    ]
+                }
+            }
+        });
+        
+        // 主标题
+        slide1.addText('e矿汇平台安全保障体系', {
+            x: 0.5, y: 1.5, w: '90%',
+            fontSize: 44,
+            fontFace: 'Microsoft YaHei',
+            color: colors.deepBrown,
+            bold: true,
+            align: 'left'
+        });
+        
+        // 副标题
+        slide1.addText('铁矿石大宗交易平台 · 上线一年安全建设成果', {
+            x: 0.5, y: 2.3, w: '90%',
+            fontSize: 20,
+            fontFace: 'Microsoft YaHei',
+            color: colors.graphite,
+            align: 'left'
+        });
+        
+        // 核心信息卡片
+        slide1.addShape('roundRect', {
+            x: 0.5, y: 3.2, w: 8.5, h: 1.2,
+            r: 0.1,
+            fill: { color: colors.creamLight },
+            line: { color: colors.miningGold, width: 1 }
+        });
+        
+        slide1.addText('e矿汇平台于2025年6月正式上线，目前已完成等保三级安全体系建设，覆盖铁矿石交易全链路。平台入驻50余家大型钢企与矿山，累计保障交易XX亿元，零重大安全事故。', {
+            x: 0.7, y: 3.3, w: 8.1, h: 1,
+            fontSize: 14,
+            fontFace: 'Microsoft YaHei',
+            color: colors.graphite,
+            valign: 'middle'
+        });
+        
+        // 底部组织信息
+        slide1.addText('中国矿产资源集团', {
+            x: 0.5, y: 5, w: '40%',
+            fontSize: 16,
+            fontFace: 'Microsoft YaHei',
+            color: colors.deepBrown,
+            bold: true
+        });
+        
+        slide1.addText('2026年6月', {
+            x: 7, y: 5, w: '20%',
+            fontSize: 14,
+            fontFace: 'Microsoft YaHei',
+            color: colors.graphite,
+            align: 'right'
+        });
+        
+        // 添加幻灯片2：三大场景概览
+        const slide2 = pptx.addSlide();
+        slide2.background = { color: colors.cream };
+        
+        // 标题
+        slide2.addText('铁矿石交易三大核心场景 · 安全措施落地情况', {
+            x: 0.5, y: 0.3, w: '90%',
+            fontSize: 24,
+            fontFace: 'Microsoft YaHei',
+            color: colors.deepBrown,
+            bold: true
+        });
+        
+        // 场景1：交易磋商
+        slide2.addShape('roundRect', {
+            x: 0.5, y: 0.9, w: 3, h: 3.5,
+            r: 0.1,
+            fill: { color: colors.creamLight },
+            line: { color: colors.miningGold, width: 2 }
+        });
+        
+        slide2.addText('🤝', {
+            x: 0.7, y: 1.0, w: 0.5,
+            fontSize: 24
+        });
+        
+        slide2.addText('交易磋商场景', {
+            x: 1.3, y: 1.05, w: 2,
+            fontSize: 14,
+            fontFace: 'Microsoft YaHei',
+            color: colors.deepBrown,
+            bold: true
+        });
+        
+        slide2.addText('钢企与矿山在线查看行情、发布询盘、磋商定价，最终达成交易意向', {
+            x: 0.7, y: 1.5, w: 2.6,
+            fontSize: 10,
+            fontFace: 'Microsoft YaHei',
+            color: colors.graphite
+        });
+        
+        slide2.addText('安全保障机制：', {
+            x: 0.7, y: 2.2, w: 2.6,
+            fontSize: 11,
+            fontFace: 'Microsoft YaHei',
+            color: colors.miningGold,
+            bold: true
+        });
+        
+        slide2.addText('• 企业实名准入 — 对接工商库核验\n• 操作全程留痕 — 全部可追溯\n• 敏感操作双保险 — UKey+短信验证', {
+            x: 0.7, y: 2.5, w: 2.6,
+            fontSize: 9,
+            fontFace: 'Microsoft YaHei',
+            color: colors.graphite
+        });
+        
+        // 场景2：合同签订
+        slide2.addShape('roundRect', {
+            x: 3.8, y: 0.9, w: 3, h: 3.5,
+            r: 0.1,
+            fill: { color: colors.creamLight },
+            line: { color: '2D5A3D', width: 2 }
+        });
+        
+        slide2.addText('📝', {
+            x: 4.0, y: 1.0, w: 0.5,
+            fontSize: 24
+        });
+        
+        slide2.addText('合同签订场景', {
+            x: 4.6, y: 1.05, w: 2,
+            fontSize: 14,
+            fontFace: 'Microsoft YaHei',
+            color: colors.deepBrown,
+            bold: true
+        });
+        
+        slide2.addText('双方确认合同条款后，使用电子签章在线签署，合同自动存证归档', {
+            x: 4.0, y: 1.5, w: 2.6,
+            fontSize: 10,
+            fontFace: 'Microsoft YaHei',
+            color: colors.graphite
+        });
+        
+        slide2.addText('安全保障机制：', {
+            x: 4.0, y: 2.2, w: 2.6,
+            fontSize: 11,
+            fontFace: 'Microsoft YaHei',
+            color: '2D5A3D',
+            bold: true
+        });
+        
+        slide2.addText('• CA数字证书签章 — 法律效力等同纸质\n• 区块链存证 — hash上链防篡改\n• 签署全流程记录 — 全部留痕', {
+            x: 4.0, y: 2.5, w: 2.6,
+            fontSize: 9,
+            fontFace: 'Microsoft YaHei',
+            color: colors.graphite
+        });
+        
+        // 场景3：资金结算
+        slide2.addShape('roundRect', {
+            x: 7.1, y: 0.9, w: 3, h: 3.5,
+            r: 0.1,
+            fill: { color: colors.creamLight },
+            line: { color: '8B3A3A', width: 2 }
+        });
+        
+        slide2.addText('💰', {
+            x: 7.3, y: 1.0, w: 0.5,
+            fontSize: 24
+        });
+        
+        slide2.addText('资金结算场景', {
+            x: 7.9, y: 1.05, w: 2,
+            fontSize: 14,
+            fontFace: 'Microsoft YaHei',
+            color: colors.deepBrown,
+            bold: true
+        });
+        
+        slide2.addText('根据合同约定发起付款，经过多级审批后，资金从买方账户划转至卖方', {
+            x: 7.3, y: 1.5, w: 2.6,
+            fontSize: 10,
+            fontFace: 'Microsoft YaHei',
+            color: colors.graphite
+        });
+        
+        slide2.addText('安全保障机制：', {
+            x: 7.3, y: 2.2, w: 2.6,
+            fontSize: 11,
+            fontFace: 'Microsoft YaHei',
+            color: '8B3A3A',
+            bold: true
+        });
+        
+        slide2.addText('• 支付多要素验证 — UKey+短信+密码\n• 7×24小时风控监测 — 实时拦截\n• 异地灾备部署 — 数据实时备份', {
+            x: 7.3, y: 2.5, w: 2.6,
+            fontSize: 9,
+            fontFace: 'Microsoft YaHei',
+            color: colors.graphite
+        });
+        
+        // 安全建设成果幻灯片
+        const slide3 = pptx.addSlide();
+        slide3.background = { color: colors.cream };
+        
+        // 标题
+        slide3.addText('安全建设成果与业务价值', {
+            x: 0.5, y: 0.3, w: '90%',
+            fontSize: 28,
+            fontFace: 'Microsoft YaHei',
+            color: colors.deepBrown,
+            bold: true
+        });
+        
+        // 统计数据
+        const stats = [
+            { num: '50+', label: '入驻大型钢企/矿山' },
+            { num: '0', label: '重大安全事故' },
+            { num: '99.9%', label: '平台可用率' },
+            { num: '等保三级', label: '安全等级认证' }
+        ];
+        
+        stats.forEach((stat, index) => {
+            const x = 0.5 + (index * 2.5);
+            
+            // 数字
+            slide3.addText(stat.num, {
+                x: x, y: 1.2, w: 2,
+                fontSize: 36,
+                fontFace: 'Microsoft YaHei',
+                color: colors.miningGold,
+                bold: true,
+                align: 'center'
+            });
+            
+            // 标签
+            slide3.addText(stat.label, {
+                x: x, y: 1.9, w: 2,
+                fontSize: 12,
+                fontFace: 'Microsoft YaHei',
+                color: colors.graphite,
+                align: 'center'
+            });
+        });
+        
+        // 分隔线
+        slide3.addShape('line', {
+            x: 0.5, y: 2.5, w: 9, h: 0,
+            line: { color: colors.creamDark, width: 1 }
+        });
+        
+        // 核心能力列表
+        slide3.addText('已建成核心安全能力', {
+            x: 0.5, y: 2.8, w: '45%',
+            fontSize: 18,
+            fontFace: 'Microsoft YaHei',
+            color: colors.deepBrown,
+            bold: true
+        });
+        
+        const capabilities = [
+            '✓ 企业身份认证与准入管理',
+            '✓ 全链路数据加密传输',
+            '✓ 操作行为审计与追溯',
+            '✓ 敏感操作双因素认证',
+            '✓ 智能风控与异常监测',
+            '✓ 异地灾备与应急响应'
+        ];
+        
+        capabilities.forEach((cap, index) => {
+            slide3.addText(cap, {
+                x: 0.5, y: 3.2 + (index * 0.25), w: '45%',
+                fontSize: 12,
+                fontFace: 'Microsoft YaHei',
+                color: colors.graphite
+            });
+        });
+        
+        // 右侧：下一步计划
+        slide3.addText('下一步持续加固方向', {
+            x: 5.5, y: 2.8, w: '45%',
+            fontSize: 18,
+            fontFace: 'Microsoft YaHei',
+            color: colors.deepBrown,
+            bold: true
+        });
+        
+        const nextSteps = [
+            '△ 权限精细化控制（按岗位/交易额分级）',
+            '△ 多方会签流程完善（跨企业联合签审）',
+            '△ 数据加密升级（字段级加密存储）',
+            '△ 渗透测试常态化（季度攻防演练）'
+        ];
+        
+        nextSteps.forEach((step, index) => {
+            slide3.addText(step, {
+                x: 5.5, y: 3.2 + (index * 0.3), w: '45%',
+                fontSize: 12,
+                fontFace: 'Microsoft YaHei',
+                color: colors.warningOchre
+            });
+        });
+        
+        // 底部标语
+        slide3.addShape('rect', {
+            x: 0, y: 5.2, w: '100%', h: 0.6,
+            fill: { color: colors.creamDark }
+        });
+        
+        slide3.addText('安全是e矿汇的核心竞争力 · 让每一笔铁矿石交易都放心安心', {
+            x: 0.5, y: 5.3, w: '90%',
+            fontSize: 14,
+            fontFace: 'Microsoft YaHei',
+            color: colors.graphite,
+            align: 'center'
+        });
+        
+        // 恢复按钮状态
+        btn.textContent = '导出 PPTX';
+        btn.style.opacity = '1';
+        
+        alert('PPTX文件已成功生成并下载！');
+        
+    } catch (error) {
+        console.error('导出失败:', error);
+        btn.textContent = '导出 PPTX';
+        btn.style.opacity = '1';
+        alert('导出失败，请查看控制台错误信息。\n错误: ' + error.message);
+    }
+});
+</script>
+</body>
+</html>

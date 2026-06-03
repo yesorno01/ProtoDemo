@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e矿汇平台安全目标达成情况</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            padding: 20px;
+        }
+        .slide {
+            width: 1200px;
+            height: 675px;
+            background: white;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            position: relative;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 4px solid #1e40af;
+            padding-bottom: 15px;
+        }
+        .title {
+            font-size: 38px;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+        .logo {
+            font-size: 20px;
+            color: #1e40af;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+        .section {
+            padding: 5px;
+        }
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title .icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        .goal-card {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 18px;
+        }
+        .goal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .goal-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e40af;
+        }
+        .goal-status {
+            background: #10b981;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .goal-desc {
+            color: #374151;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .measures-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .measure-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid #10b981;
+            font-size: 13px;
+            color: #374151;
+        }
+        .business-value {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .value-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .value-points {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .value-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .value-point .bullet {
+            color: #f59e0b;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: -2px;
+        }
+        .value-point .text {
+            color: #78350f;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .summary-box {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 22px;
+        }
+        .summary-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #065f46;
+            margin-bottom: 15px;
+        }
+        .summary-content {
+            color: #064e3b;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 40px;
+            right: 40px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">e矿汇平台安全目标达成情况</div>
+            <div class="logo">
+                <span style="font-size: 28px;">⛏️</span>
+                中国矿产
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="left">
+                <div class="section">
+                    <div class="section-title">
+                        <div class="icon">🎯</div>
+                        <span>三大安全目标</span>
+                    </div>
+                    
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <div class="goal-title">目标一：交易可信</div>
+                            <div class="goal-status">✓ 已达成</div>
+                        </div>
+                        <div class="goal-desc">确保每一笔铁矿石交易真实、完整、不可篡改，从下单到结算全流程可信</div>
+                        <div class="measures-grid">
+                            <div class="measure-item">身份认证 + 数字签名</div>
+                            <div class="measure-item">区块链存证</div>
+                            <div class="measure-item">交易全链路审计</div>
+                            <div class="measure-item">智能风控引擎</div>
+                        </div>
+                    </div>
+                    
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <div class="goal-title">目标二：数据安全</div>
+                            <div class="goal-status">✓ 已达成</div>
+                        </div>
+                        <div class="goal-desc">保护客户信息、交易价格、合同条款等敏感数据不泄露、不被滥用</div>
+                        <div class="measures-grid">
+                            <div class="measure-item">端到端加密传输</div>
+                            <div class="measure-item">数据分级分类</div>
+                            <div class="measure-item">脱敏处理 + 水印</div>
+                            <div class="measure-item">访问权限精细化</div>
+                        </div>
+                    </div>
+                    
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <div class="goal-title">目标三：连续运营</div>
+                            <div class="goal-status">✓ 已达成</div>
+                        </div>
+                        <div class="goal-desc">7×24小时不间断服务，即使遇到故障或攻击也能快速恢复</div>
+                        <div class="measures-grid">
+                            <div class="measure-item">多活架构部署</div>
+                            <div class="measure-item">异地灾备备份</div>
+                            <div class="measure-item">DDoS防护 + WAF</div>
+                            <div class="measure-item">分钟级应急响应</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right">
+                <div class="section">
+                    <div class="section-title">
+                        <div class="icon">💎</div>
+                        <span>安全创造业务价值</span>
+                    </div>
+                    
+                    <div class="business-value">
+                        <div class="value-title">
+                            <span>📈</span>
+                            安全赋能业务发展
+                        </div>
+                        <div class="value-points">
+                            <div class="value-point">
+                                <span class="bullet">●</span>
+                                <div class="text"><strong>增强客户信任</strong> - 让上下游客户放心在平台进行亿元级交易</div>
+                            </div>
+                            <div class="value-point">
+                                <span class="bullet">●</span>
+                                <div class="text"><strong>支撑业务扩张</strong> - 安全能力随业务规模同步增长，支持更多交易品类</div>
+                            </div>
+                            <div class="value-point">
+                                <span class="bullet">●</span>
+                                <div class="text"><strong>符合监管要求</strong> - 通过等保、网信办等各项监管检查，合规经营</div>
+                            </div>
+                            <div class="value-point">
+                                <span class="bullet">●</span>
+                                <div class="text"><strong>保护企业声誉</strong> - 避免安全事件造成的品牌损失和经济损失</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-box">
+                        <div class="summary-title">✅ 安全保障总结</div>
+                        <div class="summary-content">
+                            我们已构建起<strong>全方位、多层次、立体化</strong>的安全防御体系，
+                            从技术、管理、运营三个维度保障e矿汇平台安全稳定运行。
+                            安全不再是业务的约束，而是<strong>业务发展的核心竞争力</strong>！
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div>汇报人：安全团队</div>
+            <div>2026年6月</div>
+        </div>
+    </div>
+</body>
+</html>

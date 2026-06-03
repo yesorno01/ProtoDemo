@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e矿汇平台安全保障</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0a2463;
+            --secondary: #1e40af;
+            --accent: #d97706;
+            --success: #059669;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+        }
+        
+        html, body {
+            height: 100%;
+            font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            overflow: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            padding: 3vh 3vw;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2vh;
+            border-bottom: 4px solid var(--accent);
+            margin-bottom: 2vh;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.2vw;
+        }
+        
+        .header-icon {
+            font-size: 4vh;
+        }
+        
+        .header-title {
+            font-size: 4vh;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: 0.03em;
+        }
+        
+        .header-sub {
+            font-size: 1.8vh;
+            color: var(--text-light);
+            margin-top: 0.5vh;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6vw;
+            font-size: 2.2vh;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo-icon {
+            width: 4.5vh;
+            height: 4.5vh;
+            background: linear-gradient(135deg, var(--accent), #fbbf24);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2vh;
+            box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3);
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2vw;
+            min-height: 0;
+        }
+        
+        /* Left Column - Scenario */
+        .left-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8vh;
+        }
+        
+        .intro-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 1.2vh;
+            padding: 2vh 2vw;
+            color: white;
+            box-shadow: 0 4px 16px rgba(10, 36, 99, 0.2);
+        }
+        
+        .intro-title {
+            font-size: 2.2vh;
+            font-weight: 700;
+            margin-bottom: 1vh;
+            display: flex;
+            align-items: center;
+            gap: 0.6vw;
+        }
+        
+        .intro-text {
+            font-size: 1.6vh;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        
+        .scenarios-section {
+            background: var(--card-bg);
+            border-radius: 1.2vh;
+            padding: 2vh 2vw;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5vh;
+        }
+        
+        .scenarios-title {
+            font-size: 2vh;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.6vw;
+        }
+        
+        .scenario-card {
+            display: flex;
+            gap: 1.2vw;
+            padding: 1.5vh 1.2vw;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            border-radius: 1vh;
+            border-left: 4px solid var(--success);
+        }
+        
+        .scenario-icon {
+            font-size: 3.5vh;
+            flex-shrink: 0;
+        }
+        
+        .scenario-content {
+            flex: 1;
+        }
+        
+        .scenario-name {
+            font-size: 1.7vh;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5vh;
+        }
+        
+        .scenario-desc {
+            font-size: 1.4vh;
+            color: var(--text);
+            line-height: 1.5;
+            margin-bottom: 0.6vh;
+        }
+        
+        .scenario-safe {
+            font-size: 1.3vh;
+            color: var(--success);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4vw;
+        }
+        
+        .scenario-safe span {
+            background: rgba(5, 150, 105, 0.1);
+            padding: 0.3vh 0.8vw;
+            border-radius: 0.5vh;
+        }
+        
+        /* Right Column */
+        .right-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8vh;
+        }
+        
+        .value-section {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border-radius: 1.2vh;
+            padding: 2vh 2vw;
+            border: 2px solid var(--accent);
+        }
+        
+        .value-title {
+            font-size: 2vh;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.2vh;
+            display: flex;
+            align-items: center;
+            gap: 0.6vw;
+        }
+        
+        .value-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8vh;
+        }
+        
+        .value-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6vw;
+            font-size: 1.5vh;
+            color: var(--text);
+            line-height: 1.5;
+        }
+        
+        .value-item .icon {
+            color: var(--accent);
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+        
+        .summary-section {
+            background: var(--card-bg);
+            border-radius: 1.2vh;
+            padding: 2vh 2vw;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            flex: 1;
+        }
+        
+        .summary-title {
+            font-size: 2vh;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.2vh;
+            display: flex;
+            align-items: center;
+            gap: 0.6vw;
+        }
+        
+        .summary-stat {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1vw;
+            margin-bottom: 1.5vh;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--success), #10b981);
+            color: white;
+            padding: 1.5vh 1vw;
+            border-radius: 1vh;
+            text-align: center;
+        }
+        
+        .stat-num {
+            font-size: 3vh;
+            font-weight: 900;
+        }
+        
+        .stat-label {
+            font-size: 1.3vh;
+            opacity: 0.9;
+            margin-top: 0.3vh;
+        }
+        
+        .summary-text {
+            font-size: 1.5vh;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        .summary-highlight {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.1), rgba(217, 119, 6, 0.05));
+            padding: 1vh 1vw;
+            border-radius: 0.8vh;
+            margin-top: 1vh;
+            border-left: 3px solid var(--accent);
+        }
+        
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 1.5vh;
+            font-size: 1.4vh;
+            color: var(--text-light);
+            border-top: 1px solid #cbd5e1;
+            margin-top: 1.5vh;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                overflow-y: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="header-left">
+                <span class="header-icon">🛡️</span>
+                <div>
+                    <div class="header-title">e矿汇平台安全保障</div>
+                    <div class="header-sub">让每一笔铁矿石交易都放心、安心、省心</div>
+                </div>
+            </div>
+            <div class="logo">
+                <div class="logo-icon">⛏️</div>
+                <span>中国矿产</span>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="left-col">
+                <div class="intro-section">
+                    <div class="intro-title">💡 我们的安全承诺</div>
+                    <div class="intro-text">
+                        作为承载铁矿石大宗交易的核心平台，我们深知安全的重要性——<strong>从客户登录、价格协商、合同签订到资金结算</strong>，每一个环节都有安全护航，确保亿元级交易万无一失。
+                    </div>
+                </div>
+                
+                <div class="scenarios-section">
+                    <div class="scenarios-title">🔄 三大交易场景，安全全程守护</div>
+                    
+                    <div class="scenario-card">
+                        <div class="scenario-icon">🤝</div>
+                        <div class="scenario-content">
+                            <div class="scenario-name">场景一：交易撮合</div>
+                            <div class="scenario-desc">当上下游客户在平台上协商铁矿石价格、确认交易意向时</div>
+                            <div class="scenario-safe">
+                                ✅ <span>身份可靠：实名认证确保对方是真实企业，价格信息加密传输不被窃听</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="scenario-card">
+                        <div class="scenario-icon">📝</div>
+                        <div class="scenario-content">
+                            <div class="scenario-name">场景二：合同签订</div>
+                            <div class="scenario-desc">当买卖双方确认铁矿石数量、价格、交货条款，签订电子合同时</div>
+                            <div class="scenario-safe">
+                                ✅ <span>合同可信：电子签章防篡改，区块链存证留痕，司法效力有保障</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="scenario-card">
+                        <div class="scenario-icon">💰</div>
+                        <div class="scenario-content">
+                            <div class="scenario-name">场景三：资金结算</div>
+                            <div class="scenario-desc">当数亿元铁矿石货款进行划转、对账、归档时</div>
+                            <div class="scenario-safe">
+                                ✅ <span>资金安全：多重要素验证，交易全程审计，7×24小时监控异常</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-col">
+                <div class="value-section">
+                    <div class="value-title">💎 安全创造的价值</div>
+                    <div class="value-list">
+                        <div class="value-item">
+                            <span class="icon">◆</span>
+                            <span><strong>客户更放心</strong>：50+家大型钢企、矿山企业愿意在平台放心交易</span>
+                        </div>
+                        <div class="value-item">
+                            <span class="icon">◆</span>
+                            <span><strong>业务有支撑</strong>：安全能力支撑平台年交易额稳步增长</span>
+                        </div>
+                        <div class="value-item">
+                            <span class="icon">◆</span>
+                            <span><strong>监管无顾虑</strong>：符合等保三级要求，国资监管实时对接</span>
+                        </div>
+                        <div class="value-item">
+                            <span class="icon">◆</span>
+                            <span><strong>品牌有保障</strong>：安全是e矿汇的核心竞争力和金字招牌</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-section">
+                    <div class="summary-title">✅ 安全建设成绩单</div>
+                    <div class="summary-stat">
+                        <div class="stat-card">
+                            <div class="stat-num">7/7</div>
+                            <div class="stat-label">安全建设项已完成</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num">等保三级</div>
+                            <div class="stat-label">合规认证已通过</div>
+                        </div>
+                    </div>
+                    <div class="summary-text">
+                        我们已建立起<strong>覆盖交易全流程</strong>的安全保障体系，从身份认证、数据加密、合同存证到系统防护，全方位守护平台安全。
+                    </div>
+                    <div class="summary-highlight">
+                        <strong>一句话总结：</strong>安全不是成本，而是e矿汇业务发展的核心竞争力！
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <span>汇报人：安全团队</span>
+            <span>2026年6月</span>
+        </div>
+    </div>
+</body>
+</html>

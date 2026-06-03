@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e矿汇平台安全保障体系</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0c1220;
+            --bg-card: #141d30;
+            --bg-card-hover: #1a2744;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #22d3ee;
+            --accent-gold: #f59e0b;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-subtle: rgba(59,130,246,0.15);
+            --glow-blue: rgba(59,130,246,0.25);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+            font-family: 'Noto Sans SC', 'DM Sans', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,0.08), transparent),
+                radial-gradient(ellipse 60% 40% at 85% 90%, rgba(34,211,238,0.05), transparent),
+                linear-gradient(180deg, #0c1220 0%, #111a2e 100%);
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            opacity: 0.4;
+        }
+
+        /* ===== Header ===== */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: clamp(1.2rem, 3vh, 2.5rem) clamp(2rem, 4vw, 4rem) 0;
+            gap: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .header-left { display: flex; align-items: center; gap: clamp(0.8rem, 1.5vw, 1.5rem); }
+
+        .brand-mark {
+            width: clamp(36px, 4vh, 52px);
+            height: clamp(36px, 4vh, 52px);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: clamp(18px, 2.2vh, 28px);
+            box-shadow: 0 4px 20px var(--glow-blue);
+        }
+
+        .title-block h1 {
+            font-size: clamp(1.4rem, 3.2vw, 2.6rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title-block .subtitle {
+            font-size: clamp(0.7rem, 1.3vw, 0.95rem);
+            color: var(--text-muted);
+            margin-top: 0.3em;
+            letter-spacing: 0.04em;
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: clamp(0.65rem, 1vw, 0.82rem);
+            color: var(--text-muted);
+        }
+
+        .header-right .org {
+            font-weight: 700;
+            color: var(--text-secondary);
+            font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+        }
+
+        /* ===== Main Content ===== */
+        .main-content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: clamp(1rem, 2.5vw, 2.5rem);
+            padding: 0 clamp(2rem, 4vw, 4rem) clamp(1.2rem, 2.5vh, 2rem);
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        /* ===== Left Column: Scenarios ===== */
+        .scenarios-area {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.5rem, 1.2vh, 0.9rem);
+            min-height: 0;
+        }
+
+        .section-label {
+            font-size: clamp(0.65rem, 1vw, 0.8rem);
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.2em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-subtle), transparent);
+        }
+
+        .scenario-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(0.6rem, 1.2vw, 1.2rem);
+            flex: 1;
+            min-height: 0;
+        }
+
+        .scenario-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: clamp(8px, 1vh, 12px);
+            padding: clamp(0.8rem, 1.6vh, 1.4rem) clamp(0.9rem, 1.4vw, 1.3rem);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 0;
+        }
+
+        .scenario-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(59,130,246,0.35);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 24px var(--glow-blue);
+        }
+
+        .scenario-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .scenario-card:nth-child(1)::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+        .scenario-card:nth-child(2)::before { background: linear-gradient(90deg, #10b981, #34d399); }
+        .scenario-card:nth-child(3)::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+
+        .scen-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6em;
+            margin-bottom: 0.6em;
+        }
+
+        .scen-icon {
+            width: clamp(28px, 3.2vh, 38px);
+            height: clamp(28px, 3.2vh, 38px);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: clamp(14px, 1.7vh, 20px);
+            flex-shrink: 0;
+        }
+
+        .scenario-card:nth-child(1) .scen-icon { background: rgba(59,130,246,0.15); }
+        .scenario-card:nth-child(2) .scen-icon { background: rgba(16,185,129,0.15); }
+        .scenario-card:nth-child(3) .scen-icon { background: rgba(245,158,11,0.15); }
+
+        .scen-title {
+            font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .scen-desc {
+            font-size: clamp(0.62rem, 0.95vw, 0.78rem);
+            color: var(--text-muted);
+            line-height: 1.45;
+            margin-bottom: 0.7em;
+        }
+
+        .scen-flow {
+            font-size: clamp(0.58rem, 0.85vw, 0.72rem);
+            color: var(--text-secondary);
+            background: rgba(255,255,255,0.04);
+            padding: 0.4em 0.7em;
+            border-radius: 6px;
+            margin-bottom: 0.7em;
+            border-left: 2px solid var(--accent-blue);
+            line-height: 1.4;
+        }
+
+        .scen-measures {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35em;
+            flex: 1;
+            align-content: flex-start;
+        }
+
+        .measure-tag {
+            font-size: clamp(0.55rem, 0.82vw, 0.7rem);
+            padding: 0.28em 0.6em;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            white-space: nowrap;
+        }
+
+        .tag-done {
+            background: rgba(16,185,129,0.12);
+            color: var(--accent-green);
+            border: 1px solid rgba(16,185,129,0.2);
+        }
+
+        .tag-partial {
+            background: rgba(245,158,11,0.12);
+            color: var(--accent-gold);
+            border: 1px solid rgba(245,158,11,0.2);
+        }
+
+        .tag-gap {
+            background: rgba(239,68,68,0.1);
+            color: var(--accent-red);
+            border: 1px solid rgba(239,68,68,0.18);
+        }
+
+        /* ===== Right Column ===== */
+        .right-col {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.6rem, 1.2vh, 1rem);
+            min-height: 0;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: clamp(8px, 1vh, 12px);
+            padding: clamp(0.8rem, 1.5vh, 1.3rem) clamp(0.9rem, 1.3vw, 1.2rem);
+            overflow: hidden;
+        }
+
+        .info-card.highlight {
+            border-color: rgba(245,158,11,0.3);
+            background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(245,158,11,0.02));
+        }
+
+        .card-title {
+            font-size: clamp(0.75rem, 1.15vw, 0.95rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.6em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+
+        .card-title .icon { font-size: 1em; }
+
+        /* Capability List */
+        .cap-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45em;
+        }
+
+        .cap-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.55em;
+            font-size: clamp(0.6rem, 0.92vw, 0.76rem);
+            line-height: 1.4;
+        }
+
+        .cap-status {
+            flex-shrink: 0;
+            font-weight: 800;
+            font-size: 0.95em;
+            margin-top: 0.05em;
+        }
+
+        .status-ok { color: var(--accent-green); }
+        .status-warn { color: var(--accent-gold); }
+
+        .cap-name { font-weight: 600; color: var(--text-primary); }
+        .cap-detail { color: var(--text-muted); }
+
+        /* Gap Analysis */
+        .gap-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4em;
+        }
+
+        .gap-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5em;
+            font-size: clamp(0.6rem, 0.9vw, 0.75rem);
+            line-height: 1.4;
+        }
+
+        .gap-dot {
+            color: var(--accent-gold);
+            flex-shrink: 0;
+            font-weight: 700;
+            margin-top: 0.05em;
+        }
+
+        .gap-text { color: var(--text-secondary); }
+        .gap-text strong { color: var(--text-primary); }
+
+        /* Value Box */
+        .value-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5em;
+            flex: 1;
+        }
+
+        .val-cell {
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            padding: 0.55em 0.6em;
+            text-align: center;
+        }
+
+        .val-num {
+            font-size: clamp(1rem, 1.6vw, 1.35rem);
+            font-weight: 900;
+            color: var(--accent-cyan);
+            line-height: 1.2;
+        }
+
+        .val-label {
+            font-size: clamp(0.53rem, 0.78vw, 0.66rem);
+            color: var(--text-muted);
+            margin-top: 0.15em;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 clamp(2rem, 4vw, 4rem) clamp(1rem, 2vh, 1.5rem);
+            font-size: clamp(0.58rem, 0.88vw, 0.73rem);
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-subtle);
+            flex-shrink: 0;
+        }
+
+        .footer-tagline {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .footer-tagline span { color: var(--accent-cyan); }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1100px) {
+            .main-content { grid-template-columns: 1fr 280px; }
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr auto;
+            }
+            .scenario-row { grid-template-columns: 1fr; }
+            .right-col { flex-direction: row; flex-wrap: wrap; }
+            .info-card { flex: 1; min-width: 240px; }
+        }
+
+        @media (max-height: 700px) {
+            .header { padding-top: 1rem; }
+            .scen-flow { margin-bottom: 0.4em; }
+            .measure-tag { padding: 0.2em 0.5em; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; transition-duration: 0.15s !important; }
+        }
+    </style>
+</head>
+<body>
+<div class="slide">
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <div class="brand-mark">⛏️</div>
+            <div class="title-block">
+                <h1>e矿汇平台安全保障体系</h1>
+                <div class="subtitle">铁矿石大宗交易平台 · 全链路安全防护与落地评估</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="org">中国矿产资源集团</div>
+            <div>2026年6月</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Left: Trading Scenarios + Security Measures -->
+        <div class="scenarios-area">
+            <div class="section-label">📋 铁矿石交易三大核心场景 · 安全措施落地情况</div>
+            <div class="scenario-row">
+
+                <!-- Scenario 1: Trading & Negotiation -->
+                <div class="scenario-card">
+                    <div class="scen-header">
+                        <div class="scen-icon">🤝</div>
+                        <div class="scen-title">交易磋商场景</div>
+                    </div>
+                    <div class="scen-desc">钢企/矿山登录平台，查看实时行情、发布询报盘、在线磋商定价</div>
+                    <div class="scen-flow">用户登录 → 行情浏览 → 磋商报价 → 确认成交</div>
+                    <div class="scen-measures">
+                        <span class="measure-tag tag-done">✓ 企业实名认证</span>
+                        <span class="measure-tag tag-done">✓ SSL/TLS传输加密</span>
+                        <span class="measure-tag tag-done">✓ 操作行为审计</span>
+                        <span class="measure-tag tag-done">✓ 敏感操作二次验证</span>
+                        <span class="measure-tag tag-partial">△ 报价信息脱敏展示</span>
+                        <span class="measure-tag tag-gap">✗ 角色权限细粒度控制待加强</span>
+                    </div>
+                </div>
+
+                <!-- Scenario 2: Contract Signing -->
+                <div class="scenario-card">
+                    <div class="scen-header">
+                        <div class="scen-icon">📝</div>
+                        <div class="scen-title">合同签订场景</div>
+                    </div>
+                    <div class="scen-desc">交易双方确认条款后，电子签章签署合同，存证归档备查</div>
+                    <div class="scen-flow">条款确认 → 电子签章 → 存证上链 → 归档备案</div>
+                    <div class="scen-measures">
+                        <span class="measure-tag tag-done">✓ CA数字证书签章</span>
+                        <span class="measure-tag tag-done">✓ 合同防篡改水印</span>
+                        <span class="measure-tag tag-done">✓ 区块链存证可追溯</span>
+                        <span class="measure-tag tag-done">✓ 签署全流程日志</span>
+                        <span class="measure-tag tag-partial">△ 合同模板合规审查</span>
+                        <span class="measure-tag tag-gap">✗ 多方会签流程待完善</span>
+                    </div>
+                </div>
+
+                <!-- Scenario 3: Settlement & Payment -->
+                <div class="scenario-card">
+                    <div class="scen-header">
+                        <div class="scen-icon">💰</div>
+                        <div class="scen-title">资金结算场景</div>
+                    </div>
+                    <div class="scen-desc">根据合同约定发起支付指令，银行/财务系统完成资金划转与对账</div>
+                    <div class="scen-flow">发起付款 → 多重审批 → 资金划转 → 对账归档</div>
+                    <div class="scen-measures">
+                        <span class="measure-tag tag-done">✓ 支付多要素验证(UKey+短信)</span>
+                        <span class="measure-tag tag-done">✓ 7×24小时交易风控监测</span>
+                        <span class="measure-tag tag-done">✓ 数据库每日增量备份</span>
+                        <span class="measure-tag tag-done">✓ 异地灾备机房部署</span>
+                        <span class="measure-tag tag-partial">△ 大额支付人工复核机制</span>
+                        <span class="measure-tag tag-gap">✗ 结算数据加密存储待升级</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Right Column: Summary -->
+        <div class="right-col">
+
+            <!-- Security Capabilities -->
+            <div class="info-card" style="flex: 1;">
+                <div class="card-title"><span class="icon">🛡️</span> 已建成安全能力（等保三级）</div>
+                <div class="cap-list">
+                    <div class="cap-item">
+                        <span class="cap-status status-ok">●</span>
+                        <span><span class="cap-name">身份认证</span> — <span class="cap-detail">UKey/短信/生物识别三选一</span></span>
+                    </div>
+                    <div class="cap-item">
+                        <span class="cap-status status-ok">●</span>
+                        <span><span class="cap-name">数据加密</span> — <span class="cap-detail">传输TLS1.3 + 存储AES-256</span></span>
+                    </div>
+                    <div class="cap-item">
+                        <span class="cap-status status-ok">●</span>
+                        <span><span class="cap-name">等级保护</span> — <span class="cap-detail">通过国家等保三级测评</span></span>
+                    </div>
+                    <div class="cap-item">
+                        <span class="cap-status status-ok">●</span>
+                        <span><span class="cap-name">区块链存证</span> — <span class="cap-detail">合同/订单全链路不可篡改</span></span>
+                    </div>
+                    <div class="cap-item">
+                        <span class="cap-status status-ok">●</span>
+                        <span><span class="cap-name">风控预警</span> — <span class="cap-detail">异常交易实时拦截告警</span></span>
+                    </div>
+                    <div class="cap-item">
+                        <span class="cap-status status-warn">◐</span>
+                        <span><span class="cap-name">灾备体系</span> — <span class="cap-detail">异地双活，RPO&lt;1小时</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gap Analysis -->
+            <div class="info-card highlight">
+                <div class="card-title"><span class="icon">⚠️</span> 待补强方向</div>
+                <div class="gap-list">
+                    <div class="gap-item">
+                        <span class="gap-dot">▸</span>
+                        <span class="gap-text"><strong>权限精细化：</strong>当前角色粒度较粗，需按岗位/交易额分级授权</span>
+                    </div>
+                    <div class="gap-item">
+                        <span class="gap-dot">▸</span>
+                        <span class="gap-text"><strong>多方会签：</strong>复杂合同需支持跨部门/跨企业联合签审流程</span>
+                    </div>
+                    <div class="gap-item">
+                        <span class="gap-dot">▸</span>
+                        <span class="gap-text"><strong>数据加密升级：</strong>结算敏感字段需字段级加密，非明文存储</span>
+                    </div>
+                    <div class="gap-item">
+                        <span class="gap-dot">▸</span>
+                        <span class="gap-text"><strong>渗透测试常态化：</strong>建议每季度开展一次攻防演练</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Value -->
+            <div class="info-card value-box">
+                <div class="card-title"><span class="icon">💎</span> 安全带来的业务价值</div>
+                <div class="value-grid">
+                    <div class="val-cell">
+                        <div class="val-num">50+</div>
+                        <div class="val-label">入驻大型钢企/矿山</div>
+                    </div>
+                    <div class="val-cell">
+                        <div class="val-num">0</div>
+                        <div class="val-label">重大安全事故</div>
+                    </div>
+                    <div class="val-cell">
+                        <div class="val-num">99.9%</div>
+                        <div class="val-label">平台可用率</div>
+                    </div>
+                    <div class="val-cell">
+                        <div class="val-num">合规</div>
+                        <div class="val-label">国资监管要求</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <span class="footer-tagline">安全是<span>e矿汇</span>的核心竞争力 · 让每一笔铁矿石交易都放心安心</span>
+        <span>信息安全团队</span>
+    </div>
+</div>
+
+<script>
+document.querySelectorAll('.scenario-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.zIndex = '10';
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.zIndex = '1';
+    });
+});
+</script>
+</body>
+</html>
