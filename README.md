@@ -17,11 +17,10 @@ ProtoDemo/
 ├── .agent/skills/
 │   └── dom-to-pptx-skill/           # HTML → PPTX 导出技能
 ├── design-system/             # 设计规范
-│   └── minerals/              # 矿产品牌配色规范
+│   └── minerals/              # 矿产配色规范
 ├── docs/                      # 文档与教程
 ├── ppt/                       # PPT 产出物（HTML 格式）
 ├── prototype/                 # 原型文件
-├── server.js                  # 本地开发服务器（CORS 支持）
 ├── package.json
 └── CLAUDE.md                  # AI 编码行为准则
 ```
