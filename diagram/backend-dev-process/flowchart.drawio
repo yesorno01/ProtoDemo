@@ -128,44 +128,32 @@
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <!-- Parallel bar (fork) -->
-        <mxCell id="fork_bar" value="" style="shape=line;fillColor=#AB47BC;strokeColor=#AB47BC;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="460" y="1040" width="280" height="3" as="geometry"/>
-        </mxCell>
-        <mxCell id="a_s7_fork" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#AB47BC;" edge="1" source="step7" target="fork_bar" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
-        <!-- Parallel label -->
-        <mxCell id="parallel_label" value="并行执行" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=36;notch=0;fillColor=#F3E5F5;strokeColor=#AB47BC;fontSize=9;fontStyle=1;fontColor=#AB47BC;whiteSpace=wrap;align=center;" vertex="1" parent="1">
-          <mxGeometry x="530" y="1048" width="140" height="20" as="geometry"/>
-        </mxCell>
-
         <!-- Step 8a -->
         <mxCell id="step8a" value="8a. 研发负责人接口测试&lt;br&gt;&lt;font color=&quot;#888&quot; style=&quot;font-size:10px&quot;&gt;接口质量守门&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#7E57C2&quot; style=&quot;font-size:9px&quot;&gt;覆盖不同场景 · 字段完整性校验&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#AB47BC;fontSize=12;fontStyle=1;verticalAlign=middle;spacingTop=2;" vertex="1" parent="1">
-          <mxGeometry x="340" y="1080" width="260" height="65" as="geometry"/>
+          <mxGeometry x="460" y="1080" width="280" height="55" as="geometry"/>
         </mxCell>
+
+        <mxCell id="a_s7_8a" value="增量交付联调" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#AB47BC;fontSize=9;fontColor=#7E57C2;" edge="1" source="step7" target="step8a" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
         <!-- Step 8b -->
         <mxCell id="step8b" value="8b. 前后端联调&lt;br&gt;&lt;font color=&quot;#888&quot; style=&quot;font-size:10px&quot;&gt;对接验证&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#7E57C2&quot; style=&quot;font-size:9px&quot;&gt;缺陷修复 · 联调通过确认&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#AB47BC;fontSize=12;fontStyle=1;verticalAlign=middle;spacingTop=2;" vertex="1" parent="1">
-          <mxGeometry x="620" y="1080" width="260" height="65" as="geometry"/>
+          <mxGeometry x="460" y="1165" width="280" height="55" as="geometry"/>
         </mxCell>
 
-        <mxCell id="a_fork_8a" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#AB47BC;" edge="1" source="fork_bar" target="step8a" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-        <mxCell id="a_fork_8b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#AB47BC;" edge="1" source="fork_bar" target="step8b" parent="1">
+        <mxCell id="a_8a_8b" value="增量交付" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#AB47BC;fontSize=9;fontColor=#7E57C2;" edge="1" source="step8a" target="step8b" parent="1">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <!-- Join bar -->
-        <mxCell id="join_bar" value="" style="shape=line;fillColor=#AB47BC;strokeColor=#AB47BC;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="460" y="1170" width="280" height="3" as="geometry"/>
-        </mxCell>
-        <mxCell id="a_8a_join" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#AB47BC;" edge="1" source="step8a" target="join_bar" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-        <mxCell id="a_8b_join" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#AB47BC;" edge="1" source="step8b" target="join_bar" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+        <!-- Feedback loop: 8b → 7 (blocking issues) -->
+        <mxCell id="a_8b_7_feedback" value="联调阻断问题&#xa;后端持续开发支持" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FF9800;dashed=1;dashPattern=5 3;fontSize=9;fontColor=#FF9800;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="step8b" target="step7" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="1192"/>
+              <mxPoint x="800" y="995"/>
+            </Array>
+          </mxGeometry>
         </mxCell>
 
         <!-- Gate 3 (after step 8) -->
@@ -179,7 +167,7 @@
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="a_join_g3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FFB300;" edge="1" source="join_bar" target="gate3" parent="1">
+        <mxCell id="a_8b_g3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FFB300;" edge="1" source="step8b" target="gate3" parent="1">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="a_g3_fail" value="未通过" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#E91E63;dashed=1;dashPattern=5 3;fontSize=9;fontColor=#E91E63;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="gate3" target="step7" parent="1">
@@ -292,7 +280,7 @@
         <mxCell id="leg_parallel" value="" style="shape=line;fillColor=#AB47BC;strokeColor=#AB47BC;strokeWidth=3;" vertex="1" parent="1">
           <mxGeometry x="580" y="2160" width="40" height="3" as="geometry"/>
         </mxCell>
-        <mxCell id="leg_parallel_t" value="并行执行" style="text;html=1;fontSize=9;fillColor=none;strokeColor=none;fontColor=#666666;" vertex="1" parent="1">
+        <mxCell id="leg_parallel_t" value="增量交付" style="text;html=1;fontSize=9;fillColor=none;strokeColor=none;fontColor=#666666;" vertex="1" parent="1">
           <mxGeometry x="628" y="2155" width="60" height="16" as="geometry"/>
         </mxCell>
 
