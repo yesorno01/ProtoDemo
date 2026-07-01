@@ -71,6 +71,30 @@ Use Feishu MCP tools in this order:
 
 Use `tencent-docs` skill tools. If MCP access fails, ask user to export as CSV/Excel and read locally.
 
+### Parse the MCP Response (Important)
+
+The `bitable_v1_appTableRecord_search` response is **double-encoded JSON** and can be large. Handle it correctly:
+
+1. **Double-encoded structure**: MCP returns `[{"type":"text","text":"<JSON string>"}]`. The `text` field is a JSON string needing a SECOND `JSON.parse()`.
+   - ❌ Do NOT regex-unescape the text string — control chars like `\n` inside field values break naive unescaping
+   - ✅ Parse the outer JSON array first, then `JSON.parse(outer[0].text)` to get `{items, has_more, page_token}`
+
+2. **Large responses** (>~20KB, common with 40+ records) are persisted to a temp file (e.g., `C:\Users\...\Temp\trae\toolcall-output\<uuid>.txt`) with only a 2KB preview shown. The Read tool also truncates at 20KB.
+   - ✅ Write a Node.js script to read the temp file and parse it (see reference script below)
+   - ✅ Save the parsed/filtered records to a smaller JSON file for inspection
+
+3. **Reference parsing script** (save to a `.js` file — do NOT inline with `node -e`, see Windows/PowerShell Notes):
+```js
+const fs = require('fs');
+const raw = fs.readFileSync('<temp-file-path>', 'utf8');
+// The file looks like: The MCP server responded with: [{"type":"text","text":"{...}"}]
+const start = raw.indexOf('[');
+const end = raw.lastIndexOf(']');
+const outer = JSON.parse(raw.slice(start, end + 1));
+const data = JSON.parse(outer[0].text); // {items, has_more, page_token}
+// data.items is the array of records
+```
+
 ## Step 3: Parse and Analyze Data
 
 ### Field Mapping
@@ -87,6 +111,22 @@ Auto-detect field semantics from field names:
 | Other Work | 其他工作, 其他 | Text |
 | Blocker | 阻塞, 问题, blocker | Text |
 | Notes | 备注, 说明, notes | Text |
+
+### Text Field Extraction
+
+Feishu Text-type fields are NOT plain strings — they return as an array of `{text, type}` segments:
+```js
+// r.fields['后端工作内容'] looks like:
+[{text: "1、询比价接口开发完成度80%\n", type: "text"}, {text: "2、im建群调整100%\n", type: "text"}]
+```
+Join the segments to get the full text:
+```js
+function getText(fieldVal) {
+  if (!Array.isArray(fieldVal)) return '';
+  return fieldVal.map(v => v.text || '').join('');
+}
+```
+The User type field (`提交人`) is similarly an array of `{id, name, ...}` objects — extract with `fieldVal.map(u => u.name).join(',')`.
 
 ### Text Field Parsing
 
@@ -214,6 +254,28 @@ When querying Feishu Bitable, some records may return with only `日报日期` a
 - Do NOT fall back to earlier dates silently
 - If ALL recent records are empty, show the most recent record that has content and note the date
 
+### Records Missing the Date Field
+
+Some pre-created template records have **NO `日报日期` field at all** (not just empty content — the field key is absent from `fields`). Accessing `r.fields['日报日期']` returns `undefined`, and `new Date(undefined + offset)` throws `RangeError: Invalid time value`.
+
+**Handling**: Always guard with `typeof ts !== 'number'` before using the date:
+```js
+const ts = r.fields['日报日期'];
+if (typeof ts !== 'number') { /* skip template row */ return; }
+```
+
+## Windows / PowerShell Environment Notes
+
+When running Node.js scripts to parse MCP response data on Windows (PowerShell), two recurring pitfalls:
+
+1. **NEVER use `node -e "..."` for complex scripts**: PowerShell + the `trae-sandbox '...'` wrapper mangle quotes, backslashes, and regexes — causing parse errors like "语句块中缺少右}". Always write the script to a `.js` file and run `node script.js`.
+
+2. **Chinese characters render as garbled text** (e.g., "祝峰" → "绁濆嘲"): caused by GBK/UTF-8 console encoding mismatch. Fix by setting UTF-8 before invoking node:
+   ```powershell
+   [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; node script.js
+   ```
+   Alternatively, write output to a UTF-8 file (`fs.writeFileSync(p, str, 'utf8')`) and read it with the Read tool, which handles encoding correctly.
+
 ## Error Handling
 
 | Error | Code | Solution |
@@ -223,6 +285,9 @@ When querying Feishu Bitable, some records may return with only `日报日期` a
 | Not found | 1770002 | Verify app_token and table_id from URL |
 | Tencent Docs auth fail | 400006 | Ask user to re-authorize or export as CSV |
 | Empty record fields | - | Record exists but content fields are empty — tell user the date has no content yet |
+| `RangeError: Invalid time value` | - | Record has no `日报日期` field (template row). Guard with `typeof ts !== 'number'` before date conversion |
+| MCP response too large / Read truncated | - | Response persisted to temp file — use a Node.js script to parse the double-encoded JSON (see "Parse the MCP Response") |
+| Garbled Chinese in console | - | GBK/UTF-8 mismatch — set `[Console]::OutputEncoding = UTF8` or write to a UTF-8 file (see "Windows / PowerShell Environment Notes") |
 
 ## Example Interactions
 
