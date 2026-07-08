@@ -67,6 +67,29 @@ Use Feishu MCP tools in this order:
      - Example: `1782230400000` → `new Date(1782230400000 + 28800000).toISOString().slice(0,10)` = `"2026-06-24"` (NOT `"2026-06-23"`)
      - Wrong way: `new Date(1782230400000).toISOString().slice(0,10)` = `"2026-06-23"` (off by 1 day due to timezone)
 
+### Scope Boundary (CRITICAL — do not violate)
+
+The report covers ONE date range only:
+- Daily report → exactly one date (`YYYY-MM-DD`)
+- Weekly report → exactly Monday 00:00 to Sunday 23:59 (CST) of the target week
+
+**NEVER read records outside the target range to "provide context", "infer trends", "fill gaps", or for any other reason.** Records outside the range are OUT OF SCOPE.
+
+This rule exists because agents have repeatedly pulled last week's completed items (e.g. "优采上线", "数据服务收费开发完成") into THIS week's report — making the report claim work that did not happen this week.
+
+**Red flags — STOP if you catch yourself doing any of these:**
+- "Let me look at last week's records for context" → STOP. Do not query out-of-range records.
+- "This week only has 2 entries, let me enrich it with prior progress" → STOP. Two entries is the truth; report it as-is.
+- "上周完成了X，所以本周进展里提一下" → STOP. Out-of-range work does NOT belong in this week's report.
+- Summarizing module status using records from outside the target range → STOP. Only use records whose `日报日期` falls inside the range.
+
+**What to do when the target range is sparse (few or no records):**
+- Report exactly what exists in-range. Do not pad with out-of-range content.
+- If all in-range records are empty (no work content fields), follow the "Empty Records Handling" section — tell the user the date has no content yet. Do NOT fall back to earlier dates silently.
+- State the data coverage explicitly at the end of the report, e.g. "说明：本周数据截至 07-07（07-08 及之后尚未填写日报）".
+
+**Self-check before output (mandatory):** For every work item, progress claim, or module summary in the report, verify its source record's `日报日期` is inside the target range. If any item traces to an out-of-range record, remove it.
+
 ### Tencent Docs (Fallback)
 
 Use `tencent-docs` skill tools. If MCP access fails, ask user to export as CSV/Excel and read locally.
@@ -218,6 +241,8 @@ Plain text format, NO tables, NO progress bars, NO markdown headers:
 - 其他: 将阻塞、备注等需要特别说明的事项放在"其他"条目中
 - 下周重点工作安排: 按模块分组，基于本周未完成项和阻塞推断下周计划
 - 每个模块的工作内容要汇总精炼，不要逐条罗列每日重复项，突出进度变化
+- **SCOPE**: Every work item, progress percentage, and module summary in the weekly report MUST come from a record whose `日报日期` falls inside this week's Monday–Sunday range (CST). See "Scope Boundary (CRITICAL)" in Step 2. Do NOT include completed items, progress, or status from prior weeks even if they appear in the same Bitable — out-of-range content in the report is a bug, not "context".
+- **Sparse-week handling**: If only some days have content (e.g. only Mon/Tue filled, Wed–Sun empty), report only the filled days' content. End the report with a coverage note like "说明：本周数据截至 07-07（07-08 及之后尚未填写日报）". Do NOT pad with last week's work.
 - NO tables, NO progress bars, NO markdown headers — use plain text with Chinese numbering
 
 ### Report Generation Rules
