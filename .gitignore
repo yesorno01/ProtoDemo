@@ -1,13 +1,29 @@
 node_modules/
 dist/
-ppt/
-prototype/
 .env
 .env.local
 *.log
 .DS_Store
 Thumbs.db
-design-system/minerals/手机端App视觉规范1.3-20251201修正.pdf
-docs
-design-system/minerals/UIUX设计规范.pdf
 
+# 产出材料目录：忽略内容，保留目录结构（.gitkeep）
+ppt/*
+!ppt/.gitkeep
+prototype/*
+!prototype/.gitkeep
+prd/*
+!prd/.gitkeep
+report/*
+!report/.gitkeep
+infographic/*
+!infographic/.gitkeep
+temp/*
+!temp/.gitkeep
+
+# 临时文件目录整体可清理
+temp/
+
+# 原始需求文档与规范 PDF（体积大，不纳入版本控制）
+docs
+design-system/minerals/手机端App视觉规范1.3-20251201修正.pdf
+design-system/minerals/UIUX设计规范.pdf
