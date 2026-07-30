@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="26.0.0">
+  <diagram id="backend-dev-process-v2" name="后端研发流程">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="2000" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="后端研发流程" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#FFFFFF;fontSize=20;fontStyle=1;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="430" y="20" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="Backend Development Process — 前端外协 / 后端主导模式" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#94a3b8;fontSize=11;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="310" y="55" width="400" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Start -->
+        <mxCell id="start" value="开始" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1e3a5f;strokeColor=#60a5fa;fontColor=#FFFFFF;fontSize=12;fontStyle=1;strokeWidth=2;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="470" y="85" width="120" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Phase 1: 需求分析 -->
+        <mxCell id="phase1" value="01&#xa;需求分析" style="swimlane;startSize=40;whiteSpace=wrap;html=1;fillColor=#083344;strokeColor=#22d3ee;dashed=1;dashPattern=6 3;strokeWidth=1;fontColor=#22d3ee;fontSize=11;fontStyle=1;swimlaneLine=0;collapsible=0;rounded=1;arcSize=8;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="130" height="310" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step1" value="&lt;b&gt;1. 需求交底&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;产品组发起&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#083344;strokeColor=#22d3ee;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="150" width="280" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="step2" value="&lt;b&gt;2. 后端功能分析&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;拆解功能点&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#083344;strokeColor=#22d3ee;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="220" width="280" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="step3" value="&lt;b&gt;3. 接口拆解&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;梳理接口清单&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#083344;strokeColor=#22d3ee;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="290" width="280" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="step4" value="&lt;b&gt;4. 工作量评估&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;量化开发工时&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#083344;strokeColor=#22d3ee;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="360" width="280" height="44" as="geometry"/>
+        </mxCell>
+
+        <!-- Gate 1 -->
+        <mxCell id="gate1" value="&lt;b&gt;评审门禁 ①&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#fbbf24&quot;&gt;接口清单 + 工作量预估&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#78350f;strokeColor=#fbbf24;fontColor=#FFFFFF;fontSize=10;strokeWidth=1.5;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="440" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="gate1_ann" value="&lt;font style=&quot;font-size:8px&quot; color=&quot;#fbbf24&quot;&gt;提交产品组/项目经理审批&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot; color=&quot;#94a3b8&quot;&gt;未通过 → 返回步骤2&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1c1208;strokeColor=#fbbf24;strokeWidth=0.5;fontColor=#fbbf24;fontSize=8;align=left;spacingLeft=5;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="740" y="460" width="220" height="32" as="geometry"/>
+        </mxCell>
+
+        <!-- Phase 2: 接口设计 -->
+        <mxCell id="phase2" value="02&#xa;接口设计" style="swimlane;startSize=40;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#34d399;dashed=1;dashPattern=6 3;strokeWidth=1;fontColor=#34d399;fontSize=11;fontStyle=1;swimlaneLine=0;collapsible=0;rounded=1;arcSize=8;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="40" y="540" width="130" height="210" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step5" value="&lt;b&gt;5. 接口协议编写&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;请求/响应/错误码&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#34d399;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="555" width="280" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="step6" value="&lt;b&gt;6. 接口协议评审&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;前后端联合评审&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#34d399;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="625" width="280" height="44" as="geometry"/>
+        </mxCell>
+
+        <!-- Gate 2 -->
+        <mxCell id="gate2" value="&lt;b&gt;评审门禁 ②&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#fbbf24&quot;&gt;接口协议 + 前后端评审&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#78350f;strokeColor=#fbbf24;fontColor=#FFFFFF;fontSize=10;strokeWidth=1.5;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="700" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="gate2_ann" value="&lt;font style=&quot;font-size:8px&quot; color=&quot;#fbbf24&quot;&gt;前后端双方签字确认&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot; color=&quot;#94a3b8&quot;&gt;未通过 → 返回步骤5&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1c1208;strokeColor=#fbbf24;strokeWidth=0.5;fontColor=#fbbf24;fontSize=8;align=left;spacingLeft=5;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="740" y="720" width="220" height="32" as="geometry"/>
+        </mxCell>
+
+        <!-- Phase 3: 开发联调 -->
+        <mxCell id="phase3" value="03&#xa;开发联调" style="swimlane;startSize=40;whiteSpace=wrap;html=1;fillColor=#4c1d95;strokeColor=#a78bfa;dashed=1;dashPattern=6 3;strokeWidth=1;fontColor=#a78bfa;fontSize=11;fontStyle=1;swimlaneLine=0;collapsible=0;rounded=1;arcSize=8;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="40" y="800" width="130" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step7" value="&lt;b&gt;7. 开发&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;编码 + 单元测试&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4c1d95;strokeColor=#a78bfa;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="815" width="280" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="step8a" value="&lt;b&gt;8a. 研发负责人接口测试&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot; color=&quot;#c4b5fd&quot;&gt;覆盖不同场景 · 字段完整性校验&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4c1d95;strokeColor=#a78bfa;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="220" y="890" width="240" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="step8b" value="&lt;b&gt;8b. 前后端联调&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot; color=&quot;#c4b5fd&quot;&gt;缺陷修复 · 联调通过确认&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4c1d95;strokeColor=#a78bfa;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="600" y="890" width="240" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="ann_debug" value="&lt;font style=&quot;font-size:8px&quot; color=&quot;#fb923c&quot;&gt;联调阻断问题&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot; color=&quot;#94a3b8&quot;&gt;后端持续开发支持&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1c1208;strokeColor=#fb923c;strokeWidth=0.5;fontColor=#fb923c;fontSize=8;align=left;spacingLeft=5;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="890" y="860" width="125" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Gate 3 -->
+        <mxCell id="gate3" value="&lt;b&gt;评审门禁 ③&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#fbbf24&quot;&gt;后端测试报告&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#78350f;strokeColor=#fbbf24;fontColor=#FFFFFF;fontSize=10;strokeWidth=1.5;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="980" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="gate3_ann" value="&lt;font style=&quot;font-size:8px&quot; color=&quot;#fbbf24&quot;&gt;研发负责人提交 · 项目经理审批&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot; color=&quot;#94a3b8&quot;&gt;未通过 → 返回步骤7&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1c1208;strokeColor=#fbbf24;strokeWidth=0.5;fontColor=#fbbf24;fontSize=8;align=left;spacingLeft=5;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="740" y="1000" width="220" height="32" as="geometry"/>
+        </mxCell>
+
+        <!-- Phase 4: 测试 -->
+        <mxCell id="phase4" value="04&#xa;测试" style="swimlane;startSize=40;whiteSpace=wrap;html=1;fillColor=#881337;strokeColor=#fb7185;dashed=1;dashPattern=6 3;strokeWidth=1;fontColor=#fb7185;fontSize=11;fontStyle=1;swimlaneLine=0;collapsible=0;rounded=1;arcSize=8;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1090" width="130" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step9" value="&lt;b&gt;9. 测试组测试&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;功能 + 集成测试&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#881337;strokeColor=#fb7185;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1100" width="280" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="step10" value="&lt;b&gt;10. 验收测试&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;业务验收确认&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#881337;strokeColor=#fb7185;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1170" width="280" height="44" as="geometry"/>
+        </mxCell>
+
+        <!-- Phase 5: 上线发布 -->
+        <mxCell id="phase5" value="05&#xa;上线发布" style="swimlane;startSize=40;whiteSpace=wrap;html=1;fillColor=#78350f;strokeColor=#fbbf24;dashed=1;dashPattern=6 3;strokeWidth=1;fontColor=#fbbf24;fontSize=11;fontStyle=1;swimlaneLine=0;collapsible=0;rounded=1;arcSize=8;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1240" width="130" height="370" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step11" value="&lt;b&gt;11. 上线Checklist提交&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;配置/脚本/环境变量&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#78350f;strokeColor=#fbbf24;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1255" width="280" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="step12" value="&lt;b&gt;12. 流水线发布Demo环境&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;自动化部署&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#78350f;strokeColor=#fbbf24;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1325" width="280" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="step13" value="&lt;b&gt;13. Demo环境验证&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;核心流程冒烟&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#78350f;strokeColor=#fbbf24;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1395" width="280" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="step14" value="&lt;b&gt;14. 流水线发布生产环境&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;正式部署&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#78350f;strokeColor=#fbbf24;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1465" width="280" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="step15" value="&lt;b&gt;15. 生产环境验证&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#94a3b8&quot;&gt;上线后核心验证&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#78350f;strokeColor=#fbbf24;fontColor=#FFFFFF;fontSize=11;arcSize=12;strokeWidth=1.5;align=left;spacingLeft=10;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1535" width="280" height="44" as="geometry"/>
+        </mxCell>
+
+        <!-- End -->
+        <mxCell id="end" value="完成" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1e3a5f;strokeColor=#60a5fa;fontColor=#FFFFFF;fontSize=12;fontStyle=1;strokeWidth=2;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="470" y="1610" width="120" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#334155;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1680" width="980" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_title" value="图例" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#94a3b8;fontSize=10;fontStyle=1;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1685" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_step" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#083344;strokeColor=#22d3ee;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1715" width="30" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_step_t" value="流程步骤" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#94a3b8;fontSize=9;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="98" y="1712" width="50" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_gate" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#78350f;strokeColor=#fbbf24;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="175" y="1712" width="20" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_gate_t" value="评审门禁" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#94a3b8;fontSize=9;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="200" y="1712" width="50" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_start" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1e3a5f;strokeColor=#60a5fa;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1715" width="30" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_start_t" value="开始/结束" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#94a3b8;fontSize=9;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="318" y="1712" width="55" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_p1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#083344;strokeColor=#22d3ee;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1745" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_p1_t" value="需求分析" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#94a3b8;fontSize=8;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1742" width="45" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_p2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#34d399;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1745" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_p2_t" value="接口设计" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#94a3b8;fontSize=8;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="170" y="1742" width="45" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_p3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4c1d95;strokeColor=#a78bfa;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="1745" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_p3_t" value="开发联调" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#94a3b8;fontSize=8;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="260" y="1742" width="45" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_p4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#881337;strokeColor=#fb7185;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="1745" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_p4_t" value="测试" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#94a3b8;fontSize=8;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="350" y="1742" width="25" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_p5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#78350f;strokeColor=#fbbf24;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="1745" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_p5_t" value="上线发布" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#94a3b8;fontSize=8;fontFamily=Noto Sans SC;" vertex="1" parent="1">
+          <mxGeometry x="420" y="1742" width="45" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== Edges ==================== -->
+
+        <!-- Start → Step 1 -->
+        <mxCell id="e_start_s1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;endArrow=block;endFill=1;endSize=6;" edge="1" source="start" target="step1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 1 → Step 2 -->
+        <mxCell id="e_s1_s2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;endArrow=block;endFill=1;endSize=6;" edge="1" source="step1" target="step2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 2 → Step 3 -->
+        <mxCell id="e_s2_s3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;endArrow=block;endFill=1;endSize=6;" edge="1" source="step2" target="step3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 3 → Step 4 -->
+        <mxCell id="e_s3_s4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;endArrow=block;endFill=1;endSize=6;" edge="1" source="step3" target="step4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 4 → Gate 1 -->
+        <mxCell id="e_s4_g1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#fbbf24;endArrow=block;endFill=1;endSize=6;" edge="1" source="step4" target="gate1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Gate 1 → Step 5 (通过) -->
+        <mxCell id="e_g1_s5" value="通过" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#34d399;endArrow=block;endFill=1;endSize=6;fontColor=#34d399;fontSize=9;fontFamily=Noto Sans SC;" edge="1" source="gate1" target="step5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Gate 1 → Step 2 (未通过) -->
+        <mxCell id="e_g1_s2" value="未通过" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#fb7185;endArrow=block;endFill=1;endSize=6;dashed=1;dashPattern=5 3;fontColor=#fb7185;fontSize=9;fontFamily=Noto Sans SC;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="gate1" target="step2" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="480"/>
+              <mxPoint x="340" y="242"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Gate 1 → Annotation -->
+        <mxCell id="e_g1_ann" style="html=1;strokeColor=#fbbf24;endArrow=none;dashed=1;dashPattern=4 2;strokeWidth=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="gate1" target="gate1_ann" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 5 → Step 6 -->
+        <mxCell id="e_s5_s6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;endArrow=block;endFill=1;endSize=6;" edge="1" source="step5" target="step6" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 6 → Gate 2 -->
+        <mxCell id="e_s6_g2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#fbbf24;endArrow=block;endFill=1;endSize=6;" edge="1" source="step6" target="gate2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Gate 2 → Step 7 (通过) -->
+        <mxCell id="e_g2_s7" value="通过" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#34d399;endArrow=block;endFill=1;endSize=6;fontColor=#34d399;fontSize=9;fontFamily=Noto Sans SC;" edge="1" source="gate2" target="step7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Gate 2 → Step 5 (未通过) -->
+        <mxCell id="e_g2_s5" value="未通过" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#fb7185;endArrow=block;endFill=1;endSize=6;dashed=1;dashPattern=5 3;fontColor=#fb7185;fontSize=9;fontFamily=Noto Sans SC;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="gate2" target="step5" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="740"/>
+              <mxPoint x="340" y="577"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Gate 2 → Annotation -->
+        <mxCell id="e_g2_ann" style="html=1;strokeColor=#fbbf24;endArrow=none;dashed=1;dashPattern=4 2;strokeWidth=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="gate2" target="gate2_ann" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 7 → Step 8a -->
+        <mxCell id="e_s7_s8a" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;endArrow=block;endFill=1;endSize=6;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="step7" target="step8a" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 8a → Step 8b (增量交付联调) -->
+        <mxCell id="e_s8a_s8b" value="增量交付联调" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#a78bfa;endArrow=block;endFill=1;endSize=6;fontColor=#c4b5fd;fontSize=9;fontFamily=Noto Sans SC;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="step8a" target="step8b" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 8b → Step 7 (联调阻断问题) -->
+        <mxCell id="e_s8b_s7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#fb923c;endArrow=block;endFill=1;endSize=6;dashed=1;dashPattern=5 3;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="step8b" target="step7" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="880" y="915"/>
+              <mxPoint x="880" y="837"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Step 8b → Annotation -->
+        <mxCell id="e_s8b_ann" style="html=1;strokeColor=#fb923c;endArrow=none;dashed=1;dashPattern=5 3;strokeWidth=0.5;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" source="step8b" target="ann_debug" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 8a → Gate 3 -->
+        <mxCell id="e_s8a_g3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#fbbf24;endArrow=block;endFill=1;endSize=6;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="step8a" target="gate3" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="960"/>
+              <mxPoint x="530" y="960"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Gate 3 → Step 9 (通过) -->
+        <mxCell id="e_g3_s9" value="通过" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#34d399;endArrow=block;endFill=1;endSize=6;fontColor=#34d399;fontSize=9;fontFamily=Noto Sans SC;" edge="1" source="gate3" target="step9" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Gate 3 → Step 7 (未通过) -->
+        <mxCell id="e_g3_s7" value="未通过" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#fb7185;endArrow=block;endFill=1;endSize=6;dashed=1;dashPattern=5 3;fontColor=#fb7185;fontSize=9;fontFamily=Noto Sans SC;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="gate3" target="step7" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="1020"/>
+              <mxPoint x="180" y="837"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Gate 3 → Annotation -->
+        <mxCell id="e_g3_ann" style="html=1;strokeColor=#fbbf24;endArrow=none;dashed=1;dashPattern=4 2;strokeWidth=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="gate3" target="gate3_ann" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 9 → Step 10 -->
+        <mxCell id="e_s9_s10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;endArrow=block;endFill=1;endSize=6;" edge="1" source="step9" target="step10" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 10 → Step 11 -->
+        <mxCell id="e_s10_s11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;endArrow=block;endFill=1;endSize=6;" edge="1" source="step10" target="step11" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 11 → Step 12 -->
+        <mxCell id="e_s11_s12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;endArrow=block;endFill=1;endSize=6;" edge="1" source="step11" target="step12" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 12 → Step 13 -->
+        <mxCell id="e_s12_s13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;endArrow=block;endFill=1;endSize=6;" edge="1" source="step12" target="step13" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 13 → Step 14 -->
+        <mxCell id="e_s13_s14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;endArrow=block;endFill=1;endSize=6;" edge="1" source="step13" target="step14" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 14 → Step 15 -->
+        <mxCell id="e_s14_s15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;endArrow=block;endFill=1;endSize=6;" edge="1" source="step14" target="step15" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 15 → End -->
+        <mxCell id="e_s15_end" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;endArrow=block;endFill=1;endSize=6;" edge="1" source="step15" target="end" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
