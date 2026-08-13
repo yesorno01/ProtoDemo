@@ -1,0 +1,21 @@
+{
+  "sourceUrl": "http://zettaskmanage.top/task/api/openapi/v1/skill-package-tokens/st-hegOh_MPRQ-Wib5ad7lHHQ49G91WoedAYccSXpM_yb4/download",
+  "archiveSha256": "55b4484203c99113a1918d3e8c6fa6267aa0caab49a54e6a797e6537b887b3c8",
+  "invocationEvent": {
+    "requiredScope": "skills:install",
+    "reportUrl": "http://zettaskmanage.top/task/api/openapi/v1/skills/sdd-requirement-workflow/invocation-events",
+    "mcpTool": "report_skill_invocation",
+    "clientHasInstallScope": true
+  },
+  "installAction": "overwrite",
+  "installScope": "project",
+  "projectDirectory": "d:\\A\\gProjectM\\ProtoDemo",
+  "metadata": {
+    "name": "sdd-requirement-workflow",
+    "title": "sdd-requirement-workflow",
+    "version": "1.0.0",
+    "skillCode": "sdd-requirement-workflow"
+  },
+  "installer": "skills-mcp-stdio-node",
+  "installerVersion": "0.6.0"
+}
